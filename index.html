@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090b16">
+<title>Popal Gaming</title>
+<style>
+:root{--bg:#090b16;--panel:#121629;--panel2:#191f37;--text:#f4f6ff;--muted:#aab2cc;--cyan:#48e5ff;--purple:#9b72ff;--pink:#ff65b8}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#20204b 0,transparent 38%),radial-gradient(ellipse at 90% 15%,#123447 0,transparent 32%),var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;min-height:100vh}
+header{position:sticky;top:0;z-index:5;background:#090b16eF;backdrop-filter:blur(12px);border-bottom:1px solid #ffffff18}
+.nav{max-width:1150px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-size:22px;font-weight:900;letter-spacing:.4px}.logo span{color:var(--cyan)}nav{display:flex;gap:18px;flex-wrap:wrap}nav a{color:var(--muted);text-decoration:none;font-weight:650;font-size:14px}nav a:hover{color:var(--cyan)}
+main{max-width:1150px;margin:auto;padding:35px 22px 70px}.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:25px;align-items:center;padding:40px 0 48px}
+.eyebrow{color:var(--cyan);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:12px}
+h1{font-size:clamp(40px,7vw,70px);line-height:1.02;margin:12px 0 18px}.gradient{background:linear-gradient(90deg,var(--cyan),#a78bff,var(--pink));background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:17px;line-height:1.7;max-width:580px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+button,.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer;background:linear-gradient(100deg,var(--cyan),#8b8cff);color:#07101c;text-decoration:none;transition:.2s}
+button:hover,.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}button.secondary,.btn.secondary{background:#ffffff10;color:var(--text);border:1px solid #ffffff25}
+.hero-art{min-height:260px;border-radius:28px;border:1px solid #ffffff20;background:linear-gradient(145deg,#25285a,#122c43 60%,#3a1b4c);display:grid;place-items:center;box-shadow:0 25px 80px #0008;position:relative;overflow:hidden}
+.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid #ffffff25;border-radius:50%;width:230px;height:230px}.hero-art:after{width:300px;height:300px}
+.controller{font-size:105px;z-index:1;filter:drop-shadow(0 12px 22px #0008)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:10px 0 20px}.section-head h2{font-size:28px;margin:0}.section-head p{color:var(--muted);margin:5px 0 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:linear-gradient(145deg,var(--panel2),var(--panel));border:1px solid #ffffff16;border-radius:20px;padding:20px;box-shadow:0 12px 30px #0003}
+.game-icon{height:120px;border-radius:15px;background:linear-gradient(135deg,#263b6c,#40265e);display:grid;place-items:center;font-size:58px;margin-bottom:16px}
+.card h3{margin:0 0 8px;font-size:20px}.card p{color:var(--muted);line-height:1.55;min-height:48px;margin:0 0 16px;font-size:14px}
+.card button{width:100%}.tag{display:inline-block;color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+#play-area{margin-top:45px;scroll-margin-top:90px}.game-panel{display:none;background:linear-gradient(145deg,#171d34,#101526);border:1px solid #ffffff20;border-radius:22px;padding:24px;margin-top:18px}.game-panel.active{display:block}
+.game-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.game-top h3{font-size:24px;margin:0}.status{color:var(--cyan);font-weight:750;margin:16px 0}
+.ttt{display:grid;grid-template-columns:repeat(3,minmax(70px,100px));gap:9px;justify-content:center;margin:20px auto}.ttt button{height:90px;font-size:34px;background:#252d4b;color:white;border:1px solid #ffffff22}
+.memory{display:grid;grid-template-columns:repeat(4,minmax(55px,85px));gap:9px;justify-content:center;margin:20px auto}.memory button{height:78px;font-size:27px;background:#252d4b;color:white;border:1px solid #ffffff22}
+.reaction-box{max-width:520px;margin:20px auto;padding:45px 20px;border-radius:18px;background:#27304d;text-align:center;font-size:20px;font-weight:800;cursor:pointer;user-select:none}
+.reaction-box.ready{background:#155b52}.reaction-box.wait{background:#74334d}
+footer{border-top:1px solid #ffffff18;text-align:center;padding:25px;color:var(--muted);font-size:13px}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:25px}.hero-art{min-height:190px}.controller{font-size:80px}.grid{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}main{padding-top:20px}.card p{min-height:0}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="logo">🎮 POPAL <span>GAMING</span></div><nav><a href="#home">Home</a><a href="#games">Games</a><a href="#play-area">Play now</a></nav></div></header>
+<main id="home">
+<section class="hero">
+<div><div class="eyebrow">Your gaming zone</div><h1>PLAY. HAVE FUN.<br><span class="gradient">REPEAT.</span></h1><p>Welcome to Popal Gaming — a place to discover and play fun mini-games right in your browser. No downloads needed for these games.</p><div class="actions"><a class="btn" href="#games">Explore games</a><a class="btn secondary" href="#play-area">Start playing</a></div></div>
+<div class="hero-art"><div class="controller">🎮</div></div>
+</section>
+<section id="games">
+<div class="section-head"><div><div class="eyebrow">Choose your challenge</div><h2>Featured games</h2><p>Pick a game and start playing instantly.</p></div></div>
+<div class="grid">
+<article class="card"><div class="game-icon">⭕</div><span class="tag">2 players</span><h3>Tic-Tac-Toe</h3><p>Challenge a friend on the same device. Get three marks in a row to win.</p><button onclick="openGame('tic')">Play game</button></article>
+<article class="card"><div class="game-icon">🧠</div><span class="tag">Puzzle</span><h3>Memory Match</h3><p>Flip the cards and find all matching pairs. Test your memory.</p><button onclick="openGame('memory')">Play game</button></article>
+<article class="card"><div class="game-icon">⚡</div><span class="tag">Reaction</span><h3>Quick Reflex</h3><p>Wait for the green signal, then tap as quickly as you can.</p><button onclick="openGame('reaction')">Play game</button></article>
+</div>
+</section>
+<section id="play-area">
+<div class="section-head"><div><div class="eyebrow">Game room</div><h2>Let's play</h2><p>Your selected game appears here.</p></div></div>
+<div id="tic" class="game-panel"><div class="game-top"><h3>Tic-Tac-Toe</h3><button class="secondary" onclick="resetTic()">Restart</button></div><div class="status" id="tic-status">Player X's turn</div><div class="ttt" id="tic-board"></div></div>
+<div id="memory" class="game-panel"><div class="game-top"><h3>Memory Match</h3><button class="secondary" onclick="startMemory()">New game</button></div><div class="status" id="memory-status">Find all 6 pairs.</div><div class="memory" id="memory-board"></div></div>
+<div id="reaction" class="game-panel"><div class="game-top"><h3>Quick Reflex</h3><button class="secondary" onclick="startReaction()">Restart</button></div><div class="status" id="reaction-status">Press Start, wait for green, then tap the box.</div><button onclick="startReaction()">Start test</button><div id="reaction-box" class="reaction-box" onclick="reactionTap()">Press Start to begin</div></div>
+</section>
+</main>
+<footer>© 2026 Popal Gaming · Made for fun</footer>
+<script>
+function openGame(id){document.querySelectorAll('.game-panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.getElementById('play-area').scrollIntoView({behavior:'smooth'});if(id==='tic')resetTic();if(id==='memory')startMemory();if(id==='reaction')resetReaction()}
+let cells,turn,ended;
+function resetTic(){cells=Array(9).fill('');turn='X';ended=false;document.getElementById('tic-status').textContent="Player X's turn";drawTic()}
+function drawTic(){let b=document.getElementById('tic-board');b.innerHTML='';cells.forEach((v,i)=>{let x=document.createElement('button');x.textContent=v;x.setAttribute('aria-label','Square '+(i+1));x.onclick=()=>moveTic(i);b.appendChild(x)})}
+function moveTic(i){if(ended||cells[i])return;cells[i]=turn;drawTic();let wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];if(wins.some(w=>w.every(n=>cells[n]===turn))){document.getElementById('tic-status').textContent='Player '+turn+' wins! 🎉';ended=true;return}if(cells.every(Boolean)){document.getElementById('tic-status').textContent="It's a draw!";ended=true;return}turn=turn==='X'?'O':'X';document.getElementById('tic-status').textContent="Player "+turn+"'s turn"}
+const symbols=['🐱','🐶','🦊','🐼','🐸','🦁'];let first=null,lock=false,matches=0,moves=0;
+function startMemory(){let deck=[...symbols,...symbols].sort(()=>Math.random()-.5);first=null;lock=false;matches=0;moves=0;document.getElementById('memory-status').textContent='Find all 6 pairs. Moves: 0';let b=document.getElementById('memory-board');b.innerHTML='';deck.forEach((s,i)=>{let c=document.createElement('button');c.textContent='?';c.dataset.symbol=s;c.dataset.index=i;c.onclick=()=>flip(c);b.appendChild(c)})}
+function flip(c){if(lock||c.dataset.done||c===first)return;c.textContent=c.dataset.symbol;if(!first){first=c;return}moves++;if(first.dataset.symbol===c.dataset.symbol){first.dataset.done='1';c.dataset.done='1';matches++;first=null;document.getElementById('memory-status').textContent=matches===6?'You found every pair! 🎉 Moves: '+moves:'Great match! Moves: '+moves}else{lock=true;let prev=first;first=null;document.getElementById('memory-status').textContent='Try again! Moves: '+moves;setTimeout(()=>{prev.textContent='?';c.textContent='?';lock=false},700)}}
+let reactionState='idle',startAt=0,timer=null;
+function resetReaction(){clearTimeout(timer);reactionState='idle';document.getElementById('reaction-box').className='reaction-box';document.getElementById('reaction-box').textContent='Press Start to begin';document.getElementById('reaction-status').textContent='Press Start, wait for green, then tap the box.'}
+function startReaction(){clearTimeout(timer);reactionState='wait';let b=document.getElementById('reaction-box');b.className='reaction-box wait';b.textContent='Wait for green...';document.getElementById('reaction-status').textContent='Stay ready!';timer=setTimeout(()=>{reactionState='go';startAt=performance.now();b.className='reaction-box ready';b.textContent='TAP NOW!'},1500+Math.random()*2500)}
+function reactionTap(){let b=document.getElementById('reaction-box');if(reactionState==='wait'){clearTimeout(timer);reactionState='idle';b.className='reaction-box';b.textContent='Too soon! Try again.';document.getElementById('reaction-status').textContent='Wait until the box turns green.'}else if(reactionState==='go'){let ms=Math.round(performance.now()-startAt);reactionState='done';b.className='reaction-box';b.textContent=ms+' ms';document.getElementById('reaction-status').textContent='Your reaction time: '+ms+' milliseconds!'}else if(reactionState==='idle'){document.getElementById('reaction-status').textContent='Press Start test first.'}}
+resetTic();startMemory();resetReaction();
+</script>
+</body>
+</html>
