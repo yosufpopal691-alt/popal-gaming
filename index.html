@@ -1,68 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#090b16">
-<title>Popal Gaming</title>
-<link rel="icon" type="image/png" href="logo.png">
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#100821">
+<meta name="description" content="Play free browser games at Popal Gaming.">
+<title>Popal Gaming — Play Free Games</title><link rel="icon" type="image/png" href="logo.png">
 <style>
-:root{--bg:#090b16;--panel:#121629;--panel2:#191f37;--text:#f4f6ff;--muted:#aab2cc;--cyan:#48e5ff;--purple:#9b72ff;--pink:#ff65b8}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#20204b 0,transparent 38%),radial-gradient(ellipse at 90% 15%,#123447 0,transparent 32%),var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;min-height:100vh}
-header{position:sticky;top:0;z-index:5;background:#090b16eF;backdrop-filter:blur(12px);border-bottom:1px solid #ffffff18}
-.nav{max-width:1150px;margin:auto;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}.brand img{width:52px;height:52px;object-fit:cover;border-radius:14px;border:1px solid #ffffff35;box-shadow:0 0 22px #48e5ff35}.logo{font-size:22px;font-weight:900;letter-spacing:.4px}.logo span{color:var(--cyan)}nav{display:flex;gap:18px;flex-wrap:wrap}nav a{color:var(--muted);text-decoration:none;font-weight:650;font-size:14px}nav a:hover{color:var(--cyan)}
-main{max-width:1150px;margin:auto;padding:35px 22px 70px}.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:25px;align-items:center;padding:40px 0 48px}
-.eyebrow{color:var(--cyan);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:12px}
-h1{font-size:clamp(40px,7vw,70px);line-height:1.02;margin:12px 0 18px}.gradient{background:linear-gradient(90deg,var(--cyan),#a78bff,var(--pink));background-clip:text;color:transparent}
-.hero p{color:var(--muted);font-size:17px;line-height:1.7;max-width:580px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
-button,.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer;background:linear-gradient(100deg,var(--cyan),#8b8cff);color:#07101c;text-decoration:none;transition:.2s}
-button:hover,.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}button.secondary,.btn.secondary{background:#ffffff10;color:var(--text);border:1px solid #ffffff25}
-.hero-art{min-height:260px;border-radius:28px;border:1px solid #ffffff20;background:linear-gradient(145deg,#25285a,#122c43 60%,#3a1b4c);display:grid;place-items:center;box-shadow:0 25px 80px #0008;position:relative;overflow:hidden}
-.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid #ffffff25;border-radius:50%;width:230px;height:230px}.hero-art:after{width:300px;height:300px}
-.controller{font-size:105px;z-index:1;filter:drop-shadow(0 12px 22px #0008)}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:10px 0 20px}.section-head h2{font-size:28px;margin:0}.section-head p{color:var(--muted);margin:5px 0 0}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:linear-gradient(145deg,var(--panel2),var(--panel));border:1px solid #ffffff16;border-radius:20px;padding:20px;box-shadow:0 12px 30px #0003}
-.game-icon{height:120px;border-radius:15px;background:linear-gradient(135deg,#263b6c,#40265e);display:grid;place-items:center;font-size:58px;margin-bottom:16px}
-.card h3{margin:0 0 8px;font-size:20px}.card p{color:var(--muted);line-height:1.55;min-height:48px;margin:0 0 16px;font-size:14px}
-.card button{width:100%}.tag{display:inline-block;color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
-#play-area{margin-top:45px;scroll-margin-top:90px}.game-panel{display:none;background:linear-gradient(145deg,#171d34,#101526);border:1px solid #ffffff20;border-radius:22px;padding:24px;margin-top:18px}.game-panel.active{display:block}
-.game-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.game-top h3{font-size:24px;margin:0}.status{color:var(--cyan);font-weight:750;margin:16px 0}
-.ttt{display:grid;grid-template-columns:repeat(3,minmax(70px,100px));gap:9px;justify-content:center;margin:20px auto}.ttt button{height:90px;font-size:34px;background:#252d4b;color:white;border:1px solid #ffffff22}
-.memory{display:grid;grid-template-columns:repeat(4,minmax(48px,85px));gap:9px;justify-content:center;margin:20px auto}.memory button{height:78px;font-size:27px;background:#252d4b;color:white;border:1px solid #ffffff22}.memory button:disabled{opacity:1;color:white;border-color:#48e5ff}.memory button.matched{background:#155b52;border-color:#48e5ff}@media(max-width:420px){.memory{grid-template-columns:repeat(4,minmax(48px,1fr))}.memory button{height:64px}}
-.reaction-box{max-width:520px;margin:20px auto;padding:45px 20px;border-radius:18px;background:#27304d;text-align:center;font-size:20px;font-weight:800;cursor:pointer;user-select:none}
-.reaction-box.ready{background:#155b52}.reaction-box.wait{background:#74334d}
+:root{--bg:#080612;--panel:#17102a;--text:#f8f5ff;--muted:#b8aecb;--purple:#8b45ff;--gold:#ffcf39}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 12% -10%,#3c176d 0,transparent 34%),radial-gradient(ellipse at 92% 4%,#171d58 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;min-height:100vh}
+[hidden]{display:none!important}header{position:sticky;top:0;z-index:20;background:#100821f2;backdrop-filter:blur(14px);border-bottom:1px solid #8d4cff66;box-shadow:0 8px 30px #0006}
+.nav{max-width:1300px;margin:auto;padding:9px 22px;display:flex;align-items:center;gap:18px;justify-content:space-between}.brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:white;min-width:190px}.brand img{width:64px;height:58px;object-fit:contain;filter:drop-shadow(0 0 12px #853cff99)}.brand strong{font-size:20px;line-height:1;font-style:italic;font-weight:950}.brand strong span{display:block;color:var(--gold);font-size:19px}
+nav{display:flex;gap:7px;align-items:center;flex-wrap:wrap}nav a,.nav-btn{background:transparent;color:#e7def7;text-decoration:none;padding:10px 12px;border-radius:13px;font-weight:800;font-size:13px}nav a:hover{background:#6328c5;color:white}
+.search{width:min(240px,22vw);background:#0c0718;border:1px solid #6732a8;border-radius:30px;color:white;padding:12px 16px;font-size:14px;outline:none}.search:focus{border-color:#b36bff;box-shadow:0 0 0 3px #9c5aff25}
+main{max-width:1300px;margin:auto;padding:22px 22px 60px}.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;min-height:250px;border:1px solid #8b4aff66;border-radius:24px;padding:30px 34px;background:linear-gradient(110deg,#20103c,#321078 48%,#171c50);box-shadow:0 18px 50px #0006;overflow:hidden}
+.eyebrow{color:var(--gold);font-size:12px;font-weight:950;letter-spacing:2px;text-transform:uppercase}h1{font-size:clamp(34px,5vw,62px);line-height:.98;margin:10px 0 12px;font-weight:1000;font-style:italic;text-transform:uppercase}.gradient{background:linear-gradient(90deg,#fff,var(--gold),#ff8e28);background-clip:text;color:transparent}.hero p{color:#ded2f1;font-size:16px;line-height:1.6;max-width:590px;margin:0}.hero-art{display:flex;align-items:center;justify-content:center;min-height:180px}.hero-art img{width:min(100%,370px);height:220px;object-fit:contain;filter:drop-shadow(0 14px 18px #0009)}
+button,.btn{border:0;border-radius:12px;padding:11px 17px;font-weight:900;cursor:pointer;background:linear-gradient(100deg,#ffcf39,#ff9b25);color:#1a1024;text-decoration:none;transition:transform .18s,filter .18s}button:hover,.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}button.secondary,.btn.secondary{background:#ffffff12;color:var(--text);border:1px solid #ffffff30}
+.actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:20px}.quick-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 24px}.stat{background:#160e29;border:1px solid #6d36b5;border-radius:15px;padding:13px 16px;display:flex;gap:12px;align-items:center;color:#e9e0f8;font-size:13px;font-weight:750}.stat b{font-size:23px;color:var(--gold)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:25px 0 15px}.section-head h2{font-size:26px;margin:0;font-style:italic}.section-head p{color:var(--muted);margin:5px 0 0;font-size:14px}.filters{display:flex;gap:8px;overflow-x:auto;padding:4px 0 13px}
+.filter-chip{white-space:nowrap;background:#17102a;border:1px solid #59338b;color:#e9e0f8;border-radius:13px;padding:10px 15px;font-weight:850;cursor:pointer}.filter-chip.selected,.filter-chip:hover{background:linear-gradient(100deg,#7435d9,#4b2b9f);border-color:#b68cff;color:white}
+.game-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}.game-card{overflow:hidden;border-radius:17px;background:linear-gradient(150deg,#201735,#120e20);border:1px solid #ffffff20;box-shadow:0 9px 24px #0004;transition:transform .18s,border-color .18s;min-width:0}.game-card:hover{transform:translateY(-4px);border-color:#9d62ff}
+.cover{width:100%;height:128px;border-radius:0;padding:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;color:white;border-bottom:1px solid #ffffff28;background:radial-gradient(circle at 25% 25%,#a84eff,#29145c 65%,#11102c)}.cover span{font-size:49px;filter:drop-shadow(0 7px 8px #0008)}.cover small{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#fff9}
+.cover-Puzzle{background:linear-gradient(135deg,#29518c,#6b37b5)}.cover-Arcade{background:linear-gradient(135deg,#8a2b88,#2b195f)}.cover-Racing{background:linear-gradient(135deg,#9a3d2c,#32205e)}.cover-Sports{background:linear-gradient(135deg,#1c7a72,#233e7e)}.cover-Action{background:linear-gradient(135deg,#a52b48,#321c65)}.cover-Adventure{background:linear-gradient(135deg,#277b67,#2a326a)}.cover-Casual{background:linear-gradient(135deg,#886326,#422b75)}
+.game-card-body{padding:12px}.game-card-title{display:flex;align-items:center;justify-content:space-between;gap:6px}.game-card h3{font-size:15px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.player-pill{font-size:8px;letter-spacing:.6px;font-weight:950;color:#ffd95e;background:#503b1e;padding:4px 6px;border-radius:20px;white-space:nowrap}.game-card p{font-size:12px;color:var(--muted);line-height:1.45;min-height:36px;margin:9px 0}.play-link{width:100%;background:#ffffff10;border:1px solid #8e5bdd;color:white;padding:9px;border-radius:10px;font-size:12px}.play-link b{color:var(--gold);float:right}
 footer{border-top:1px solid #ffffff18;text-align:center;padding:25px;color:var(--muted);font-size:13px}
-@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:25px}.hero-art{min-height:190px}.controller{font-size:80px}.grid{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}main{padding-top:20px}.card p{min-height:0}}
-</style>
-</head>
-<body>
-<header><div class="nav"><a class="brand" href="#home"><img src="logo.png" alt="Popal Gaming logo"><div class="logo">POPAL <span>GAMING</span></div></a><nav><a href="#home">Home</a><a href="#games">Games</a><a href="#play-area">Play now</a></nav></div></header>
-<main id="home">
-<section class="hero">
-<div><div class="eyebrow">Your gaming zone</div><h1>PLAY. HAVE FUN.<br><span class="gradient">REPEAT.</span></h1><p>Welcome to Popal Gaming — a place to discover and play fun mini-games right in your browser. No downloads needed for these games.</p><div class="actions"><a class="btn" href="#games">Explore games</a><a class="btn secondary" href="#play-area">Start playing</a></div></div>
-<div class="hero-art"><div class="controller">🎮</div></div>
-</section>
-<section id="games">
-<div class="section-head"><div><div class="eyebrow">Choose your challenge</div><h2>Featured games</h2><p>Pick a game and start playing instantly.</p></div></div>
-<div class="grid">
-<article class="card"><div class="game-icon">⭕</div><span class="tag">2 players</span><h3>Tic-Tac-Toe</h3><p>Challenge a friend on the same device. Get three marks in a row to win.</p><button onclick="openGame('tic')">Play game</button></article>
-<article class="card"><div class="game-icon">🧠</div><span class="tag">Puzzle</span><h3>Memory Match</h3><p>Flip the cards and find all matching pairs. Test your memory.</p><button onclick="openGame('memory')">Play game</button></article>
-<article class="card"><div class="game-icon">⚡</div><span class="tag">Reaction</span><h3>Quick Reflex</h3><p>Wait for the green signal, then tap as quickly as you can.</p><button onclick="openGame('reaction')">Play game</button></article>
-
-<article class="card"><div class="game-icon">✊</div><span class="tag">Quick match</span><h3>Rock Paper Scissors</h3><p>Play a quick round against the computer.</p><button onclick="openGame('rps')">Play game</button></article>
-<article class="card"><div class="game-icon">🔢</div><span class="tag">Number puzzle</span><h3>Number Guess</h3><p>Find the secret number between 1 and 100.</p><button onclick="openGame('guess')">Play game</button></article>
-<article class="card"><div class="game-icon">🧮</div><span class="tag">Brain training</span><h3>Math Sprint</h3><p>Answer quick math questions and build your score.</p><button onclick="openGame('math')">Play game</button></article>
-<article class="card"><div class="game-icon">🔤</div><span class="tag">Word puzzle</span><h3>Word Scramble</h3><p>Unscramble the letters to find the hidden word.</p><button onclick="openGame('word')">Play game</button></article>
-<article class="card"><div class="game-icon">🎨</div><span class="tag">Color challenge</span><h3>Color Match</h3><p>Choose the color named on the screen.</p><button onclick="openGame('color')">Play game</button></article>
-<article class="card"><div class="game-icon">🟢</div><span class="tag">Arcade</span><h3>Whack-a-Dot</h3><p>Tap the glowing dot as many times as you can.</p><button onclick="openGame('whack')">Play game</button></article>
-<article class="card"><div class="game-icon">🧠</div><span class="tag">Memory</span><h3>Simon Sequence</h3><p>Remember the color sequence and repeat it.</p><button onclick="openGame('simon')">Play game</button></article>
-<article class="card"><div class="game-icon">🪙</div><span class="tag">Luck</span><h3>Coin Flip</h3><p>Flip a coin and see heads or tails.</p><button onclick="openGame('coin')">Play game</button></article>
-<article class="card"><div class="game-icon">🎯</div><span class="tag">Speed</span><h3>Tap Challenge</h3><p>Tap the button as many times as possible in 10 seconds.</p><button onclick="openGame('tap')">Play game</button></article>
-<article class="card"><div class="game-icon">⬆️</div><span class="tag">Higher or lower</span><h3>Higher or Lower</h3><p>Guess whether the next number will be higher or lower.</p><button onclick="openGame('higher')">Play game</button></article>
-</div>
-</section>
-<section id="play-area">
+#game-page{max-width:1050px;margin:0 auto;padding:25px 22px 70px;min-height:75vh}.game-page-top{display:flex;align-items:center;gap:15px;margin-bottom:20px}.game-page-top h1{font-size:clamp(26px,4vw,40px);margin:0;flex:1}.game-page-top .back-btn{background:#ffffff12;color:white;border:1px solid #ffffff30}
+.game-panel{display:none;background:linear-gradient(145deg,#1b1530,#100d1e);border:1px solid #7042aa;border-radius:22px;padding:22px;margin-top:10px;box-shadow:0 15px 40px #0006}.game-panel.active{display:block}.game-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.game-top h3{font-size:23px;margin:0}.status{color:#f5d77a;font-weight:750;margin:16px 0;text-align:center}
+.game-icon{height:100px;border-radius:15px;background:linear-gradient(135deg,#263b6c,#40265e);display:grid;place-items:center;font-size:58px;margin:16px auto;max-width:300px}.ttt{display:grid;grid-template-columns:repeat(3,minmax(70px,100px));gap:9px;justify-content:center;margin:20px auto}.ttt button{height:90px;font-size:34px;background:#252d4b;color:white;border:1px solid #ffffff22}
+.memory{display:grid;grid-template-columns:repeat(4,minmax(48px,85px));gap:9px;justify-content:center;margin:20px auto}.memory button{height:78px;font-size:27px;background:#252d4b;color:white;border:1px solid #ffffff22}.memory button:disabled{opacity:1;color:white;border-color:#48e5ff}.memory button.matched{background:#155b52;border-color:#48e5ff}
+.reaction-box{max-width:520px;margin:20px auto;padding:45px 20px;border-radius:18px;background:#27304d;text-align:center;font-size:20px;font-weight:800;cursor:pointer;user-select:none}.reaction-box.ready{background:#155b52}.reaction-box.wait{background:#74334d}
+.arcade-canvas{display:block;width:min(100%,420px);height:auto;margin:14px auto;border-radius:16px;border:1px solid #ffffff30;background:#10182d;touch-action:manipulation}.touch-controls{display:flex;flex-direction:column;align-items:center;gap:7px;margin:12px auto}.touch-controls div{display:flex;gap:8px}.touch-controls button{min-width:48px}
+.board2048{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;width:min(100%,340px);margin:16px auto;padding:8px;border-radius:14px;background:#5b4b67}.tile2048{aspect-ratio:1;display:grid;place-items:center;border-radius:8px;background:#b9a9a0;color:#352b35;font-size:clamp(19px,4vw,28px);font-weight:950}.t0{background:#776b79}.t2{background:#eee4da}.t4{background:#ede0c8}.t8{background:#f2b179}.t16{background:#f59563;color:white}.t32,.t64{background:#ef765b;color:white}.t128,.t256,.t512,.t1024,.t2048{background:#e9c34e;color:#2b1d20}
+.mines-board{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;width:min(100%,360px);margin:16px auto}.mines-board button{padding:0;aspect-ratio:1;background:#5a4a7a;color:white;border-radius:5px;font-size:16px}.mines-board button.revealed{background:#d5c9e7;color:#231b32;cursor:default}
+.sudoku-board{display:grid;grid-template-columns:repeat(9,1fr);width:min(100%,405px);margin:16px auto;border:2px solid #a27ce4}.sudoku-board input{width:100%;aspect-ratio:1;min-width:0;text-align:center;font-size:clamp(13px,3vw,20px);font-weight:800;background:#211735;color:white;border:1px solid #594477;border-radius:0;padding:0}.sudoku-board input:nth-child(3n){border-right:2px solid #a27ce4}.sudoku-board input:disabled{background:#48345e;color:#ffe08a}.sudoku-board input.wrong{background:#7b304a}
+input{font:inherit}.game-panel input:not([type=checkbox]){padding:11px;border-radius:10px;border:1px solid #74549a;background:#0d0918;color:white;max-width:210px}
+@media(max-width:1050px){.game-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:780px){.nav{flex-wrap:wrap;gap:8px}.brand{min-width:0}.brand img{width:54px;height:48px}.brand strong{font-size:17px}.brand strong span{font-size:16px}nav{order:3;width:100%;overflow-x:auto}.search{flex:1;width:auto}.hero{grid-template-columns:1fr;padding:24px}.hero-art{min-height:110px}.hero-art img{height:135px;width:240px}.quick-stats{grid-template-columns:1fr}.game-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:520px){main{padding:14px 12px 45px}.game-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.cover{height:105px}.cover span{font-size:40px}.game-card-body{padding:9px}.game-card h3{font-size:13px}.game-card p{font-size:11px}.player-pill{font-size:7px}.game-page-top{flex-wrap:wrap}.game-page-top h1{width:100%;order:-1}.game-panel{padding:14px}}
+</style></head><body>
+<header><div class="nav">
+<a class="brand" href="#home" onclick="goHome()"><img src="logo.png" alt="Popal Gaming emblem"><strong>POPAL<span>GAMING</span></strong></a>
+<nav><a href="#home" onclick="goHome()">⌂ Home</a><a href="#games-section" onclick="goHome();setTimeout(scrollGames,50)">▦ All Games</a><a href="#single" onclick="goHome();setTimeout(()=>filterGames('single'),50)">★ Single Player</a><a href="#categories" onclick="goHome();setTimeout(()=>document.getElementById('categories').scrollIntoView(),50)">Categories</a></nav>
+<input class="search" id="game-search" placeholder="⌕ Search games..." oninput="searchGames(this.value)" aria-label="Search games">
+</div></header>
+<main id="home-page">
+<section class="hero"><div><div class="eyebrow">Welcome to your gaming zone</div><h1>Play more.<br><span class="gradient">Have fun!</span></h1><p>Discover free browser games at Popal Gaming. Jump into action, racing, sports, puzzles and solo challenges — no emulator or download needed for these built-in games.</p><div class="actions"><button onclick="scrollGames()">Explore games →</button><button class="secondary" onclick="filterGames('single');scrollGames()">Single Player Games</button></div></div><div class="hero-art"><img src="logo.png" alt="Popal Gaming crowned controller logo"></div></section>
+<div class="quick-stats"><div class="stat"><b>23</b><span>Playable browser games</span></div><div class="stat"><b>10</b><span>New single-player challenges</span></div><div class="stat"><b>0</b><span>Downloads needed</span></div></div>
+<section id="games-section"><div class="section-head"><div><div class="eyebrow">Choose your next challenge</div><h2 id="games-heading">Popular Games</h2><p>Choose a game card to open its own play page.</p></div></div>
+<div class="filters" id="categories">
+<button class="filter-chip selected" data-filter="all" onclick="filterGames('all')">🎮 All Games</button><button class="filter-chip" data-filter="single" onclick="filterGames('single')">⭐ Single Player</button><button class="filter-chip" data-filter="Action" onclick="filterGames('Action')">⚔️ Action</button><button class="filter-chip" data-filter="Racing" onclick="filterGames('Racing')">🏎️ Racing</button><button class="filter-chip" data-filter="Sports" onclick="filterGames('Sports')">🏀 Sports</button><button class="filter-chip" data-filter="Puzzle" onclick="filterGames('Puzzle')">🧩 Puzzle</button><button class="filter-chip" data-filter="Arcade" onclick="filterGames('Arcade')">🕹️ Arcade</button><button class="filter-chip" data-filter="Adventure" onclick="filterGames('Adventure')">🌄 Adventure</button><button class="filter-chip" data-filter="Casual" onclick="filterGames('Casual')">✨ Casual</button>
+</div><div class="game-grid" id="game-grid"><article class="game-card" data-category="Puzzle" data-single="false" data-name="tic-tac-toe">
+      <button class="cover cover-puzzle" onclick="openGame('tic')" aria-label="Play Tic-Tac-Toe"><span>⭕</span><small>Puzzle</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Tic-Tac-Toe</h3><span class="player-pill">2 PLAYERS</span></div><p>Two players take turns on the same board.</p><button class="play-link" onclick="openGame('tic')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Puzzle" data-single="true" data-name="memory match">
+      <button class="cover cover-puzzle" onclick="openGame('memory')" aria-label="Play Memory Match"><span>🧠</span><small>Puzzle</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Memory Match</h3><span class="player-pill">1 PLAYER</span></div><p>Find matching pairs; each level adds more cards.</p><button class="play-link" onclick="openGame('memory')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Arcade" data-single="true" data-name="quick reflex">
+      <button class="cover cover-arcade" onclick="openGame('reaction')" aria-label="Play Quick Reflex"><span>⚡</span><small>Arcade</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Quick Reflex</h3><span class="player-pill">1 PLAYER</span></div><p>Wait for green, then test your reaction speed.</p><button class="play-link" onclick="openGame('reaction')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Arcade" data-single="true" data-name="rock paper scissors">
+      <button class="cover cover-arcade" onclick="openGame('rps')" aria-label="Play Rock Paper Scissors"><span>✊</span><small>Arcade</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Rock Paper Scissors</h3><span class="player-pill">1 PLAYER</span></div><p>Play a quick match against the computer.</p><button class="play-link" onclick="openGame('rps')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Puzzle" data-single="true" data-name="number guess">
+      <button class="cover cover-puzzle" onclick="openGame('guess')" aria-label="Play Number Guess"><span>🔢</span><small>Puzzle</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Number Guess</h3><span class="player-pill">1 PLAYER</span></div><p>Find the secret number from 1 to 100.</p><button class="play-link" onclick="openGame('guess')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Puzzle" data-single="true" data-name="math sprint">
+      <button class="cover cover-puzzle" onclick="openGame('math')" aria-label="Play Math Sprint"><span>🧮</span><small>Puzzle</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Math Sprint</h3><span class="player-pill">1 PLAYER</span></div><p>Solve quick sums and build your score.</p><button class="play-link" onclick="openGame('math')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Puzzle" data-single="true" data-name="word scramble">
+      <button class="cover cover-puzzle" onclick="openGame('word')" aria-label="Play Word Scramble"><span>🔤</span><small>Puzzle</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Word Scramble</h3><span class="player-pill">1 PLAYER</span></div><p>Unscramble the letters to reveal the word.</p><button class="play-link" onclick="openGame('word')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Arcade" data-single="true" data-name="color match">
+      <button class="cover cover-arcade" onclick="openGame('color')" aria-label="Play Color Match"><span>🎨</span><small>Arcade</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Color Match</h3><span class="player-pill">1 PLAYER</span></div><p>Choose the color named on the screen.</p><button class="play-link" onclick="openGame('color')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Arcade" data-single="true" data-name="whack-a-dot">
+      <button class="cover cover-arcade" onclick="openGame('whack')" aria-label="Play Whack-a-Dot"><span>🟢</span><small>Arcade</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Whack-a-Dot</h3><span class="player-pill">1 PLAYER</span></div><p>Hit the glowing dot before time runs out.</p><button class="play-link" onclick="openGame('whack')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Puzzle" data-single="true" data-name="simon sequence">
+      <button class="cover cover-puzzle" onclick="openGame('simon')" aria-label="Play Simon Sequence"><span>🧠</span><small>Puzzle</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Simon Sequence</h3><span class="player-pill">1 PLAYER</span></div><p>Remember the sequence and repeat it.</p><button class="play-link" onclick="openGame('simon')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Casual" data-single="true" data-name="coin flip">
+      <button class="cover cover-casual" onclick="openGame('coin')" aria-label="Play Coin Flip"><span>🪙</span><small>Casual</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Coin Flip</h3><span class="player-pill">1 PLAYER</span></div><p>Flip a coin and see what comes up.</p><button class="play-link" onclick="openGame('coin')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Arcade" data-single="true" data-name="tap challenge">
+      <button class="cover cover-arcade" onclick="openGame('tap')" aria-label="Play Tap Challenge"><span>🎯</span><small>Arcade</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Tap Challenge</h3><span class="player-pill">1 PLAYER</span></div><p>Tap as quickly as you can in ten seconds.</p><button class="play-link" onclick="openGame('tap')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Casual" data-single="true" data-name="higher or lower">
+      <button class="cover cover-casual" onclick="openGame('higher')" aria-label="Play Higher or Lower"><span>⬆️</span><small>Casual</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Higher or Lower</h3><span class="player-pill">1 PLAYER</span></div><p>Predict whether the next number is higher or lower.</p><button class="play-link" onclick="openGame('higher')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Arcade" data-single="true" data-name="snake">
+      <button class="cover cover-arcade" onclick="openGame('snake')" aria-label="Play Snake"><span>🐍</span><small>Arcade</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Snake</h3><span class="player-pill">1 PLAYER</span></div><p>Eat the dots, grow longer, and avoid your tail.</p><button class="play-link" onclick="openGame('snake')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Arcade" data-single="true" data-name="flappy flyer">
+      <button class="cover cover-arcade" onclick="openGame('flappy')" aria-label="Play Flappy Flyer"><span>🐤</span><small>Arcade</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Flappy Flyer</h3><span class="player-pill">1 PLAYER</span></div><p>Fly through the gaps and beat your best score.</p><button class="play-link" onclick="openGame('flappy')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Puzzle" data-single="true" data-name="2048">
+      <button class="cover cover-puzzle" onclick="openGame('2048')" aria-label="Play 2048"><span>🔢</span><small>Puzzle</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>2048</h3><span class="player-pill">1 PLAYER</span></div><p>Merge matching tiles to reach the 2048 tile.</p><button class="play-link" onclick="openGame('2048')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Arcade" data-single="true" data-name="brick breaker">
+      <button class="cover cover-arcade" onclick="openGame('brick')" aria-label="Play Brick Breaker"><span>🧱</span><small>Arcade</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Brick Breaker</h3><span class="player-pill">1 PLAYER</span></div><p>Bounce the ball and clear every brick.</p><button class="play-link" onclick="openGame('brick')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Puzzle" data-single="true" data-name="minesweeper">
+      <button class="cover cover-puzzle" onclick="openGame('mines')" aria-label="Play Minesweeper"><span>💣</span><small>Puzzle</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Minesweeper</h3><span class="player-pill">1 PLAYER</span></div><p>Reveal safe squares and flag hidden mines.</p><button class="play-link" onclick="openGame('mines')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Puzzle" data-single="true" data-name="sudoku">
+      <button class="cover cover-puzzle" onclick="openGame('sudoku')" aria-label="Play Sudoku"><span>🔠</span><small>Puzzle</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Sudoku</h3><span class="player-pill">1 PLAYER</span></div><p>Fill the grid so every row and column has 1–9.</p><button class="play-link" onclick="openGame('sudoku')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Adventure" data-single="true" data-name="endless runner">
+      <button class="cover cover-adventure" onclick="openGame('runner')" aria-label="Play Endless Runner"><span>🏃</span><small>Adventure</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Endless Runner</h3><span class="player-pill">1 PLAYER</span></div><p>Jump over obstacles and run as far as you can.</p><button class="play-link" onclick="openGame('runner')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Racing" data-single="true" data-name="traffic racer">
+      <button class="cover cover-racing" onclick="openGame('traffic')" aria-label="Play Traffic Racer"><span>🚗</span><small>Racing</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Traffic Racer</h3><span class="player-pill">1 PLAYER</span></div><p>Dodge traffic and survive for the longest distance.</p><button class="play-link" onclick="openGame('traffic')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Sports" data-single="true" data-name="basketball challenge">
+      <button class="cover cover-sports" onclick="openGame('basket')" aria-label="Play Basketball Challenge"><span>🏀</span><small>Sports</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Basketball Challenge</h3><span class="player-pill">1 PLAYER</span></div><p>Take shots and score baskets against the clock.</p><button class="play-link" onclick="openGame('basket')">Play now <b>→</b></button></div>
+    </article>
+<article class="game-card" data-category="Action" data-single="true" data-name="space dodge">
+      <button class="cover cover-action" onclick="openGame('space')" aria-label="Play Space Dodge"><span>🚀</span><small>Action</small></button>
+      <div class="game-card-body"><div class="game-card-title"><h3>Space Dodge</h3><span class="player-pill">1 PLAYER</span></div><p>Pilot your ship and dodge falling asteroids.</p><button class="play-link" onclick="openGame('space')">Play now <b>→</b></button></div>
+    </article></div></section></main>
+<section id="game-page" hidden><div class="game-page-top"><button class="back-btn" onclick="goHome()">← Back to games</button><h1 id="game-page-title">Game</h1><button class="secondary" onclick="goHome()">Home</button></div><div id="play-area">
 <div class="section-head"><div><div class="eyebrow">Game room</div><h2>Let's play</h2><p>Your selected game appears here.</p></div></div>
 <div id="tic" class="game-panel"><div class="game-top"><h3>Tic-Tac-Toe</h3><button class="secondary" onclick="resetTic()">Restart</button></div><div class="status" id="tic-status">Player X's turn</div><div class="ttt" id="tic-board"></div></div>
 <div id="memory" class="game-panel"><div class="game-top"><h3>Memory Match</h3><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="secondary" onclick="startMemory(true)">Restart level</button><button id="memory-next" onclick="nextMemoryLevel()" style="display:none">Next level →</button></div></div><div class="status" id="memory-status">Level 1 · Find all 6 pairs.</div><div class="memory" id="memory-board"></div></div>
@@ -78,11 +155,21 @@ footer{border-top:1px solid #ffffff18;text-align:center;padding:25px;color:var(-
 <div id="tap" class="game-panel"><div class="game-top"><h3>Tap Challenge</h3><button class="secondary" onclick="startTap()">Start / Restart</button></div><div class="status" id="tap-status">Tap Start, then tap the big button for 10 seconds.</div><button id="tap-button" class="reaction-box" onclick="tapHit()">START</button></div>
 <div id="higher" class="game-panel"><div class="game-top"><h3>Higher or Lower</h3><button class="secondary" onclick="newHigher()">New game</button></div><div class="status" id="higher-status">Guess if the next number is higher or lower.</div><div class="game-icon" id="higher-number">?</div><div class="actions"><button onclick="higherPick('higher')">Higher ⬆️</button><button onclick="higherPick('lower')">Lower ⬇️</button></div><p id="higher-score">Score: 0</p></div>
 <div id="reaction" class="game-panel"><div class="game-top"><h3>Quick Reflex</h3><button class="secondary" onclick="startReaction()">Restart</button></div><div class="status" id="reaction-status">Press Start, wait for green, then tap the box.</div><button onclick="startReaction()">Start test</button><div id="reaction-box" class="reaction-box" onclick="reactionTap()">Press Start to begin</div></div>
-</section>
-</main>
-<footer>© 2026 Popal Gaming · Made for fun</footer>
+ 
+<div id="snake" class="game-panel"><div class="game-top"><h3>Snake</h3><button class="secondary" onclick="startSnake()">Restart</button></div><div class="status" id="snake-status">Use arrow keys or WASD to move.</div><canvas id="snake-canvas" width="400" height="400" class="arcade-canvas"></canvas><div class="touch-controls"><button onclick="snakeDir(0,-1)">↑</button><div><button onclick="snakeDir(-1,0)">←</button><button onclick="snakeDir(0,1)">↓</button><button onclick="snakeDir(1,0)">→</button></div></div></div>
+<div id="flappy" class="game-panel"><div class="game-top"><h3>Flappy Flyer</h3><button class="secondary" onclick="startFlappy()">Restart</button></div><div class="status" id="flappy-status">Tap the game or press Space to fly.</div><canvas id="flappy-canvas" width="400" height="420" class="arcade-canvas"></canvas></div>
+<div id="2048" class="game-panel"><div class="game-top"><h3>2048</h3><button class="secondary" onclick="start2048()">New game</button></div><div class="status" id="2048-status">Join equal tiles to reach 2048. Use arrow keys or buttons.</div><div id="board2048" class="board2048"></div><div class="touch-controls"><button onclick="move2048('up')">↑</button><div><button onclick="move2048('left')">←</button><button onclick="move2048('down')">↓</button><button onclick="move2048('right')">→</button></div></div></div>
+<div id="brick" class="game-panel"><div class="game-top"><h3>Brick Breaker</h3><button class="secondary" onclick="startBrick()">Restart</button></div><div class="status" id="brick-status">Move the paddle with your mouse or arrow keys.</div><canvas id="brick-canvas" width="420" height="420" class="arcade-canvas"></canvas></div>
+<div id="mines" class="game-panel"><div class="game-top"><h3>Minesweeper</h3><button class="secondary" onclick="startMines()">New board</button></div><div class="status" id="mines-status">Reveal every safe square. Right-click to flag a mine.</div><div id="mines-board" class="mines-board"></div></div>
+<div id="sudoku" class="game-panel"><div class="game-top"><h3>Sudoku</h3><button class="secondary" onclick="startSudoku()">New puzzle</button></div><div class="status" id="sudoku-status">Fill each row, column, and 3×3 box with 1–9.</div><div id="sudoku-board" class="sudoku-board"></div><div class="actions"><button onclick="checkSudoku()">Check answers</button><button class="secondary" onclick="solveSudoku()">Show solution</button></div></div>
+<div id="runner" class="game-panel"><div class="game-top"><h3>Endless Runner</h3><button class="secondary" onclick="startRunner()">Restart</button></div><div class="status" id="runner-status">Tap or press Space to jump.</div><canvas id="runner-canvas" width="420" height="260" class="arcade-canvas"></canvas></div>
+<div id="traffic" class="game-panel"><div class="game-top"><h3>Traffic Racer</h3><button class="secondary" onclick="startTraffic()">Restart</button></div><div class="status" id="traffic-status">Use ← → or A/D to change lanes.</div><canvas id="traffic-canvas" width="360" height="440" class="arcade-canvas"></canvas><div class="touch-controls"><button onclick="trafficMove(-1)">←</button><button onclick="trafficMove(1)">→</button></div></div>
+<div id="basket" class="game-panel"><div class="game-top"><h3>Basketball Challenge</h3><button class="secondary" onclick="startBasket()">Restart</button></div><div class="status" id="basket-status">Tap the hoop area to shoot. Score as many as you can in 30 seconds.</div><canvas id="basket-canvas" width="420" height="340" class="arcade-canvas"></canvas></div>
+<div id="space" class="game-panel"><div class="game-top"><h3>Space Dodge</h3><button class="secondary" onclick="startSpace()">Restart</button></div><div class="status" id="space-status">Use ← → or A/D to dodge asteroids.</div><canvas id="space-canvas" width="380" height="440" class="arcade-canvas"></canvas><div class="touch-controls"><button onclick="spaceMove(-1)">←</button><button onclick="spaceMove(1)">→</button></div></div>
+</div></section>
+<footer>© 2026 Popal Gaming · Play. Enjoy. Repeat.</footer>
 <script>
-function openGame(id){document.querySelectorAll('.game-panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.getElementById('play-area').scrollIntoView({behavior:'smooth'});if(id==='tic')resetTic();if(id==='memory')startMemory();if(id==='reaction')resetReaction();if(id==='rps')resetRps();if(id==='guess')newGuess();if(id==='math')newMath();if(id==='word')newWord();if(id==='color')newColor();if(id==='whack')startWhack();if(id==='simon')startSimon();if(id==='coin')document.getElementById('coin-result').textContent='Ready to flip?';if(id==='tap')resetTap();if(id==='higher')newHigher()}
+function openGame(id){if(location.hash==='#play/'+id){showGame(id)}else{location.hash='play/'+id}}
 let cells,turn,ended;
 function resetTic(){cells=Array(9).fill('');turn='X';ended=false;document.getElementById('tic-status').textContent="Player X's turn";drawTic()}
 function drawTic(){let b=document.getElementById('tic-board');b.innerHTML='';cells.forEach((v,i)=>{let x=document.createElement('button');x.textContent=v;x.setAttribute('aria-label','Square '+(i+1));x.onclick=()=>moveTic(i);b.appendChild(x)})}
@@ -109,7 +196,131 @@ function flipCoin(){let heads=Math.random()<.5;document.getElementById('coin-res
 let tapActive=false,tapCount=0,tapTime=0,tapTimer=null;function resetTap(){clearInterval(tapTimer);tapActive=false;tapCount=0;document.getElementById('tap-button').textContent='START';document.getElementById('tap-status').textContent='Tap Start, then tap the big button for 10 seconds.'}function startTap(){clearInterval(tapTimer);tapCount=0;tapTime=10;tapActive=true;document.getElementById('tap-button').textContent='TAP!';document.getElementById('tap-status').textContent='Time: 10s · Taps: 0';tapTimer=setInterval(()=>{tapTime--;document.getElementById('tap-status').textContent='Time: '+tapTime+'s · Taps: '+tapCount;if(tapTime<=0){clearInterval(tapTimer);tapActive=false;document.getElementById('tap-button').textContent='FINISHED';document.getElementById('tap-status').textContent='Time up! You tapped '+tapCount+' times.'}},1000)}function tapHit(){if(!tapActive){if(tapTime===0&&tapCount===0)startTap();return}tapCount++;document.getElementById('tap-status').textContent='Time: '+tapTime+'s · Taps: '+tapCount}
 let higherCurrent=0,higherScore=0;function newHigher(){higherCurrent=1+Math.floor(Math.random()*10);higherScore=0;document.getElementById('higher-number').textContent=higherCurrent;document.getElementById('higher-score').textContent='Score: 0';document.getElementById('higher-status').textContent='Will the next number be higher or lower?'}function higherPick(choice){let next=1+Math.floor(Math.random()*10),correct=(choice==='higher'&&next>higherCurrent)||(choice==='lower'&&next<higherCurrent);document.getElementById('higher-status').textContent='Next number: '+next+'. '+(next===higherCurrent?'It was equal!':correct?'Correct!':'Not this time.');if(correct)higherScore++;document.getElementById('higher-score').textContent='Score: '+higherScore; higherCurrent=next;document.getElementById('higher-number').textContent=next}
 
+
+// New single-player arcade games
+let arcadeToken=0, activeGame='';
+function showGame(id){
+  const panel=document.getElementById(id);
+  if(!panel)return;
+  activeGame=id; arcadeToken++;
+  document.getElementById('home-page').hidden=true;
+  document.getElementById('game-page').hidden=false;
+  document.querySelectorAll('.game-panel').forEach(p=>p.classList.remove('active'));
+  panel.classList.add('active');
+  const title=panel.querySelector('h3')?.textContent||'Game';
+  document.getElementById('game-page-title').textContent=title;
+  window.scrollTo({top:0,behavior:'smooth'});
+  clearTimeout(timer); if(typeof whackTimer!=='undefined')clearInterval(whackTimer);
+  if(typeof tapTimer!=='undefined')clearInterval(tapTimer);
+  if(id==='tic')resetTic();
+  if(id==='memory')startMemory();
+  if(id==='reaction')resetReaction();
+  if(id==='rps')resetRps();
+  if(id==='guess')newGuess();
+  if(id==='math')newMath();
+  if(id==='word')newWord();
+  if(id==='color')newColor();
+  if(id==='whack')startWhack();
+  if(id==='simon')startSimon();
+  if(id==='coin')document.getElementById('coin-result').textContent='Ready to flip?';
+  if(id==='tap')resetTap();
+  if(id==='higher')newHigher();
+  if(id==='snake')startSnake();
+  if(id==='flappy')startFlappy();
+  if(id==='2048')start2048();
+  if(id==='brick')startBrick();
+  if(id==='mines')startMines();
+  if(id==='sudoku')startSudoku();
+  if(id==='runner')startRunner();
+  if(id==='traffic')startTraffic();
+  if(id==='basket')startBasket();
+  if(id==='space')startSpace();
+  history.replaceState(null,'','#play/'+id);
+  document.title=title+' | Popal Gaming';
+}
+function goHome(){
+  activeGame=''; arcadeToken++;
+  document.getElementById('game-page').hidden=true;
+  document.getElementById('home-page').hidden=false;
+  history.replaceState(null,'','#home');
+  document.title='Popal Gaming — Play Free Games';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+window.addEventListener('hashchange',()=>{let m=location.hash.match(/^#play\/([a-z0-9]+)$/);if(m)showGame(m[1]);else if(location.hash==='#home'||!location.hash)goHome()});
+function routeOnLoad(){let m=location.hash.match(/^#play\/([a-z0-9]+)$/);if(m)showGame(m[1]);else goHome()}
+function filterGames(category){
+  document.querySelectorAll('.filter-chip').forEach(b=>b.classList.toggle('selected',b.dataset.filter===category));
+  document.querySelectorAll('.game-card').forEach(card=>{
+    let match=category==='all'||(category==='single'?card.dataset.single==='true':card.dataset.category===category);
+    card.hidden=!match;
+  });
+  document.getElementById('games-heading').textContent=category==='single'?'Single Player Games':category==='all'?'All Games':category+' Games';
+}
+function searchGames(value){
+  let q=value.trim().toLowerCase();
+  document.querySelectorAll('.game-card').forEach(card=>{card.hidden=!!q&&!card.dataset.name.includes(q)});
+  document.getElementById('games-heading').textContent=q?'Search Results':'All Games';
+}
+function scrollGames(){document.getElementById('games-section').scrollIntoView({behavior:'smooth'})}
+
+// Canvas helpers
+function canvasCtx(id){const c=document.getElementById(id);return [c,c.getContext('2d')]}
+function fitCanvasText(ctx,text,x,y,size=18,color='#fff'){ctx.fillStyle=color;ctx.font='bold '+size+'px system-ui';ctx.fillText(text,x,y)}
+let snakeTimer=null,snakeBody=[],snakeVector={x:1,y:0},snakeFood={x:10,y:10},snakeScore=0;
+function snakeDir(x,y){if(x!==-snakeVector.x||y!==-snakeVector.y)snakeVector={x,y}}
+function startSnake(){
+ clearInterval(snakeTimer);let [c,ctx]=canvasCtx('snake-canvas');snakeBody=[{x:9,y:10},{x:8,y:10},{x:7,y:10}];snakeVector={x:1,y:0};snakeScore=0;placeSnakeFood();document.getElementById('snake-status').textContent='Score: 0 · Use arrows or WASD.';
+ const token=++arcadeToken;
+ function tick(){if(token!==arcadeToken)return;let h={x:snakeBody[0].x+snakeVector.x,y:snakeBody[0].y+snakeVector.y};if(h.x<0||h.y<0||h.x>=20||h.y>=20||snakeBody.some(p=>p.x===h.x&&p.y===h.y)){clearInterval(snakeTimer);document.getElementById('snake-status').textContent='Game over! Score: '+snakeScore+' · Press Restart.';return}snakeBody.unshift(h);if(h.x===snakeFood.x&&h.y===snakeFood.y){snakeScore++;placeSnakeFood()}else snakeBody.pop();ctx.fillStyle='#10182d';ctx.fillRect(0,0,400,400);ctx.fillStyle='#ffcb55';ctx.fillRect(snakeFood.x*20+3,snakeFood.y*20+3,14,14);snakeBody.forEach((p,i)=>{ctx.fillStyle=i?'#35b9c8':'#a4ff74';ctx.fillRect(p.x*20+2,p.y*20+2,16,16)});document.getElementById('snake-status').textContent='Score: '+snakeScore+' · Eat the yellow dot.'}
+ snakeTimer=setInterval(tick,125);tick();
+}
+function placeSnakeFood(){do{snakeFood={x:Math.floor(Math.random()*20),y:Math.floor(Math.random()*20)}}while(snakeBody.some(p=>p.x===snakeFood.x&&p.y===snakeFood.y))}
+let flappyState=null;
+function startFlappy(){let [c,ctx]=canvasCtx('flappy-canvas');let token=++arcadeToken;flappyState={y:190,v:0,pipes:[{x:440,gap:145,passed:false}],score:0,over:false};function flap(){if(flappyState.over){startFlappy();return}flappyState.v=-5.8}c.onclick=flap;function frame(){if(token!==arcadeToken)return;let s=flappyState;if(!s.over){s.v+=.28;s.y+=s.v;s.pipes.forEach(p=>p.x-=2.5);if(s.pipes[s.pipes.length-1].x<220)s.pipes.push({x:440,gap:100+Math.random()*180,passed:false});s.pipes=s.pipes.filter(p=>p.x>-60);for(let p of s.pipes){if(!p.passed&&p.x<65){p.passed=true;s.score++}if(55<p.x+42&&85>p.x&& (s.y< p.gap-65||s.y>p.gap+65))s.over=true}if(s.y<0||s.y>420)s.over=true}
+ ctx.fillStyle='#112b4a';ctx.fillRect(0,0,400,420);ctx.fillStyle='#244e71';ctx.fillRect(0,350,400,70);s.pipes.forEach(p=>{ctx.fillStyle='#5dd18b';ctx.fillRect(p.x,0,42,p.gap-65);ctx.fillRect(p.x,p.gap+65,42,420-p.gap-65)});ctx.fillStyle='#ffd45e';ctx.beginPath();ctx.arc(75,s.y,14,0,Math.PI*2);ctx.fill();fitCanvasText(ctx,'Score: '+s.score,14,28,18);if(s.over){fitCanvasText(ctx,'Game over — tap to retry',70,210,20)}requestAnimationFrame(frame)}c.onkeydown=flap;frame();document.getElementById('flappy-status').textContent='Tap the game or press Space to flap.'}
+let board2048=[],score2048=0;
+function start2048(){board2048=Array(16).fill(0);score2048=0;add2048();add2048();draw2048();document.getElementById('2048-status').textContent='Score: 0 · Combine matching tiles.'}
+function add2048(){let e=board2048.map((v,i)=>v?null:i).filter(v=>v!==null);if(e.length)board2048[e[Math.floor(Math.random()*e.length)]]=Math.random()<.9?2:4}
+function draw2048(){let b=document.getElementById('board2048');b.innerHTML='';board2048.forEach(v=>{let d=document.createElement('div');d.className='tile2048 t'+v;d.textContent=v||'';b.appendChild(d)})}
+function move2048(dir){let old=board2048.join(',');for(let n=0;n<4;n++){let line=[];for(let i=0;i<4;i++){let idx=dir==='left'?n*4+i:dir==='right'?n*4+(3-i):dir==='up'?i*4+n:(3-i)*4+n;line.push(board2048[idx])}let vals=line.filter(Boolean);for(let j=0;j<vals.length-1;j++)if(vals[j]===vals[j+1]){vals[j]*=2;score2048+=vals[j];vals.splice(j+1,1)}while(vals.length<4)vals.push(0);for(let i=0;i<4;i++){let idx=dir==='left'?n*4+i:dir==='right'?n*4+(3-i):dir==='up'?i*4+n:(3-i)*4+n;board2048[idx]=vals[i]}}if(old!==board2048.join(',')){add2048();draw2048();document.getElementById('2048-status').textContent='Score: '+score2048+(board2048.includes(2048)?' · You reached 2048!':'')}}
+let brickState=null;
+function startBrick(){let [c,ctx]=canvasCtx('brick-canvas');let token=++arcadeToken;brickState={x:210,y:340,dx:2.7,dy:-3,paddle:175,bricks:Array.from({length:4},(_,r)=>Array.from({length:8},(_,i)=>({x:12+i*50,y:35+r*25,on:true}))),over:false};c.onmousemove=e=>{let r=c.getBoundingClientRect();brickState.paddle=(e.clientX-r.left)*c.width/r.width-35};function frame(){if(token!==arcadeToken)return;let s=brickState;if(!s.over){s.x+=s.dx;s.y+=s.dy;if(s.x<8||s.x>412)s.dx*=-1;if(s.y<8)s.dy*=-1;if(s.y>365&&s.y<380&&s.x>s.paddle&&s.x<s.paddle+70)s.dy=-Math.abs(s.dy);if(s.y>420)s.over=true;s.bricks.flat().forEach(b=>{if(b.on&&s.x>b.x&&s.x<b.x+42&&s.y>b.y&&s.y<b.y+15){b.on=false;s.dy*=-1}});if(s.bricks.flat().every(b=>!b.on))s.over=true}
+ ctx.fillStyle='#10182d';ctx.fillRect(0,0,420,420);s.bricks.flat().forEach(b=>{if(b.on){ctx.fillStyle='#8c6cff';ctx.fillRect(b.x,b.y,42,15)}});ctx.fillStyle='#5ee4ee';ctx.fillRect(s.paddle,385,70,10);ctx.fillStyle='#ffcf5a';ctx.beginPath();ctx.arc(s.x,s.y,7,0,7);ctx.fill();if(s.over)fitCanvasText(ctx,'Round over — restart',105,220,20);requestAnimationFrame(frame)}frame();document.getElementById('brick-status').textContent='Move your paddle with mouse or arrows.'}
+let minesData=[],minesOver=false;
+function startMines(){let b=document.getElementById('mines-board');b.innerHTML='';minesData=Array.from({length:64},()=>({mine:false,open:false,flag:false,n:0}));minesOver=false;let placed=0;while(placed<10){let i=Math.floor(Math.random()*64);if(!minesData[i].mine){minesData[i].mine=true;placed++}}minesData.forEach((cell,i)=>{cell.n=neighbors(i).filter(j=>minesData[j].mine).length;let btn=document.createElement('button');btn.textContent='';btn.onclick=()=>revealMine(i);btn.oncontextmenu=e=>{e.preventDefault();if(!cell.open&&!minesOver){cell.flag=!cell.flag;btn.textContent=cell.flag?'🚩':''}};b.appendChild(btn)});document.getElementById('mines-status').textContent='10 mines hidden · Left-click to reveal, right-click to flag.'}
+function neighbors(i){let x=i%8,y=Math.floor(i/8),a=[];for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){let xx=x+dx,yy=y+dy;if(xx>=0&&xx<8&&yy>=0&&yy<8&&(dx||dy))a.push(yy*8+xx)}return a}
+function revealMine(i){if(minesOver||minesData[i].open||minesData[i].flag)return;let c=minesData[i],btn=document.querySelectorAll('#mines-board button')[i];c.open=true;btn.classList.add('revealed');if(c.mine){btn.textContent='💥';minesOver=true;minesData.forEach((v,j)=>{if(v.mine)document.querySelectorAll('#mines-board button')[j].textContent='💣'});document.getElementById('mines-status').textContent='Boom! Start a new board to try again.';return}btn.textContent=c.n||'·';if(!c.n)neighbors(i).forEach(revealMine);if(minesData.filter(v=>!v.mine&&v.open).length===54){minesOver=true;document.getElementById('mines-status').textContent='You cleared the board! 🎉'}}
+let sudokuPuzzle=[[5,3,0,0,7,0,0,0,0],[6,0,0,1,9,5,0,0,0],[0,9,8,0,0,0,0,6,0],[8,0,0,0,6,0,0,0,3],[4,0,0,8,0,3,0,0,1],[7,0,0,0,2,0,0,0,6],[0,6,0,0,0,0,2,8,0],[0,0,0,4,1,9,0,0,5],[0,0,0,0,8,0,0,7,9]];
+let sudokuSolution=[[5,3,4,6,7,8,9,1,2],[6,7,2,1,9,5,3,4,8],[1,9,8,3,4,2,5,6,7],[8,5,9,7,6,1,4,2,3],[4,2,6,8,5,3,7,9,1],[7,1,3,9,2,4,8,5,6],[9,6,1,5,3,7,2,8,4],[2,8,7,4,1,9,6,3,5],[3,4,5,2,8,6,1,7,9]];
+function startSudoku(){let b=document.getElementById('sudoku-board');b.innerHTML='';sudokuPuzzle.forEach((row,r)=>row.forEach((v,c)=>{let inp=document.createElement('input');inp.inputMode='numeric';inp.maxLength=1;inp.dataset.r=r;inp.dataset.c=c;if(v){inp.value=v;inp.disabled=true}else inp.placeholder='';b.appendChild(inp)}));document.getElementById('sudoku-status').textContent='Fill the empty cells, then check your answers.'}
+function checkSudoku(){let inputs=[...document.querySelectorAll('#sudoku-board input')],ok=true;inputs.forEach(i=>{let r=+i.dataset.r,c=+i.dataset.c,v=+i.value;if(v!==sudokuSolution[r][c]){ok=false;i.classList.add('wrong')}else i.classList.remove('wrong')});document.getElementById('sudoku-status').textContent=ok?'Solved! Excellent work! 🎉':'Some cells are not correct yet. Red cells need another look.'}
+function solveSudoku(){document.querySelectorAll('#sudoku-board input').forEach(i=>{i.value=sudokuSolution[+i.dataset.r][+i.dataset.c];i.classList.remove('wrong')});document.getElementById('sudoku-status').textContent='Solution shown. Start a new puzzle to play again.'}
+let runnerState=null;
+function startRunner(){let [c,ctx]=canvasCtx('runner-canvas');let token=++arcadeToken;runnerState={y:190,vy:0,obs:[],score:0,over:false};function jump(){if(runnerState.over){startRunner();return}if(runnerState.y>=190)runnerState.vy=-8.5}c.onclick=jump;function frame(){if(token!==arcadeToken)return;let s=runnerState;if(!s.over){s.vy+=.45;s.y=Math.min(190,s.y+s.vy);if(Math.random()<.025)s.obs.push({x:430,h:25+Math.random()*30});s.obs.forEach(o=>o.x-=4);s.obs=s.obs.filter(o=>o.x>-30);s.score++;if(s.obs.some(o=>o.x<75&&o.x+22>45&&s.y+35>220-o.h))s.over=true}
+ ctx.fillStyle='#122b42';ctx.fillRect(0,0,420,260);ctx.fillStyle='#315b65';ctx.fillRect(0,220,420,40);ctx.fillStyle='#63e6a5';ctx.fillRect(48,s.y,28,30);s.obs.forEach(o=>{ctx.fillStyle='#ff7b68';ctx.fillRect(o.x,220-o.h,22,o.h)});fitCanvasText(ctx,'Score: '+Math.floor(s.score/5),12,25);if(s.over)fitCanvasText(ctx,'Game over — tap to retry',95,120,18);requestAnimationFrame(frame)}frame();document.getElementById('runner-status').textContent='Tap or press Space to jump over obstacles.'}
+let trafficState=null;
+function trafficMove(d){if(trafficState)trafficState.lane=Math.max(0,Math.min(2,trafficState.lane+d))}
+function startTraffic(){let [c,ctx]=canvasCtx('traffic-canvas');let token=++arcadeToken;trafficState={lane:1,obs:[],score:0,over:false};function frame(){if(token!==arcadeToken)return;let s=trafficState;if(!s.over){s.score++;if(Math.random()<.025)s.obs.push({lane:Math.floor(Math.random()*3),y:-60});s.obs.forEach(o=>o.y+=4);s.obs=s.obs.filter(o=>o.y<480);if(s.obs.some(o=>o.lane===s.lane&&o.y>350&&o.y<425))s.over=true}
+ ctx.fillStyle='#1c2738';ctx.fillRect(0,0,360,440);ctx.fillStyle='#49546a';ctx.fillRect(35,0,290,440);ctx.setLineDash([18,18]);ctx.strokeStyle='#e5e9f3';ctx.beginPath();ctx.moveTo(131,0);ctx.lineTo(131,440);ctx.moveTo(229,0);ctx.lineTo(229,440);ctx.stroke();ctx.setLineDash([]);s.obs.forEach(o=>{ctx.fillStyle='#e45d69';ctx.fillRect(52+o.lane*98,o.y,58,80)});ctx.fillStyle='#63d9ff';ctx.fillRect(52+s.lane*98,365,58,65);fitCanvasText(ctx,'Score: '+Math.floor(s.score/5),12,25);if(s.over)fitCanvasText(ctx,'Crash! Restart to race again',45,220,18);requestAnimationFrame(frame)}frame();document.getElementById('traffic-status').textContent='Use left/right arrows or the buttons.'}
+let basketState=null;
+function startBasket(){let [c,ctx]=canvasCtx('basket-canvas');let token=++arcadeToken;basketState={score:0,left:30,shots:0,over:false,ball:null,hoop:210};c.onclick=e=>{if(basketState.over)return;let r=c.getBoundingClientRect(),x=(e.clientX-r.left)*c.width/r.width;basketState.shots++;basketState.ball={x:210,y:300,t:0,hit:Math.abs(x-basketState.hoop)<65};if(basketState.ball.hit)basketState.score++};let last=Date.now();let timerId=setInterval(()=>{if(token!==arcadeToken){clearInterval(timerId);return}basketState.left--;document.getElementById('basket-status').textContent='Score: '+basketState.score+' · Time: '+basketState.left+'s · Tap near the hoop.';if(basketState.left<=0){basketState.over=true;clearInterval(timerId);document.getElementById('basket-status').textContent='Time! Final score: '+basketState.score+'/'+basketState.shots}},1000);function frame(){if(token!==arcadeToken)return;let s=basketState;ctx.fillStyle='#15243a';ctx.fillRect(0,0,420,340);ctx.fillStyle='#9a6a42';ctx.fillRect(0,290,420,50);ctx.strokeStyle='#ff755f';ctx.lineWidth=7;ctx.beginPath();ctx.arc(s.hoop,95,42,0,Math.PI);ctx.stroke();ctx.fillStyle='#dfeaff';ctx.fillRect(s.hoop+38,58,8,75);if(s.ball){s.ball.t+=.04;let t=s.ball.t;ctx.fillStyle='#ff9e45';ctx.beginPath();ctx.arc(210+(s.ball.x-210)*t,300-220*Math.sin(Math.PI*t),12,0,7);ctx.fill();if(t>1)s.ball=null}fitCanvasText(ctx,'Score: '+s.score,14,28);if(s.over)fitCanvasText(ctx,'Time is up!',165,200,20);requestAnimationFrame(frame)}frame();document.getElementById('basket-status').textContent='Tap near the hoop to shoot. 30 seconds.'}
+let spaceState=null;
+function spaceMove(d){if(spaceState)spaceState.x=Math.max(18,Math.min(362,spaceState.x+d*32))}
+function startSpace(){let [c,ctx]=canvasCtx('space-canvas');let token=++arcadeToken;spaceState={x:190,rocks:[],score:0,over:false};function frame(){if(token!==arcadeToken)return;let s=spaceState;if(!s.over){s.score++;if(Math.random()<.035)s.rocks.push({x:Math.random()*360,y:-20,r:8+Math.random()*12});s.rocks.forEach(o=>o.y+=3.5);s.rocks=s.rocks.filter(o=>o.y<460);if(s.rocks.some(o=>Math.abs(o.x-s.x)<o.r+13&&Math.abs(o.y-395)<o.r+13))s.over=true}
+ ctx.fillStyle='#080f27';ctx.fillRect(0,0,380,440);for(let i=0;i<45;i++){ctx.fillStyle='#ffffff80';ctx.fillRect((i*73)%380,(i*47+Math.floor(s.score/4))%440,2,2)}s.rocks.forEach(o=>{ctx.fillStyle='#ff8d65';ctx.beginPath();ctx.arc(o.x,o.y,o.r,0,7);ctx.fill()});ctx.fillStyle='#61dfff';ctx.beginPath();ctx.moveTo(s.x,375);ctx.lineTo(s.x-15,414);ctx.lineTo(s.x+15,414);ctx.fill();fitCanvasText(ctx,'Score: '+Math.floor(s.score/5),12,25);if(s.over)fitCanvasText(ctx,'Game over — restart',105,225,19);requestAnimationFrame(frame)}frame();document.getElementById('space-status').textContent='Dodge the falling asteroids with arrows or buttons.'}
+
+// Keyboard support for arcade games and number puzzle
+document.addEventListener('keydown',e=>{
+ const tag=e.target.tagName;if(tag==='INPUT'||tag==='TEXTAREA')return;
+ if(activeGame==='snake'){let m={ArrowUp:[0,-1],w:[0,-1],ArrowDown:[0,1],s:[0,1],ArrowLeft:[-1,0],a:[-1,0],ArrowRight:[1,0],d:[1,0]}[e.key];if(m){e.preventDefault();snakeDir(m[0],m[1])}}
+ if(activeGame==='flappy'&&e.code==='Space'){e.preventDefault();let c=document.getElementById('flappy-canvas');c.click()}
+ if(activeGame==='runner'&&e.code==='Space'){e.preventDefault();document.getElementById('runner-canvas').click()}
+ if(activeGame==='traffic'){if(e.key==='ArrowLeft'||e.key==='a')trafficMove(-1);if(e.key==='ArrowRight'||e.key==='d')trafficMove(1)}
+ if(activeGame==='space'){if(e.key==='ArrowLeft'||e.key==='a')spaceMove(-1);if(e.key==='ArrowRight'||e.key==='d')spaceMove(1)}
+ if(activeGame==='brick'){if(e.key==='ArrowLeft')brickState.paddle=Math.max(0,brickState.paddle-20);if(e.key==='ArrowRight')brickState.paddle=Math.min(350,brickState.paddle+20)}
+ if(activeGame==='2048'){let d={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right'}[e.key];if(d){e.preventDefault();move2048(d)}}
+});
+
 resetTic();startMemory();resetReaction();
-</script>
-</body>
-</html>
+routeOnLoad();
+</script></body></html>
