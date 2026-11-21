@@ -142,6 +142,33 @@ body.playing #runner-canvas, body.playing #traffic-canvas {
 body.playing #runner-canvas { width:min(94vw,900px); max-height:calc(100dvh - 330px); }
 body.playing #traffic-canvas { width:min(82vw,620px); max-height:calc(100dvh - 330px); }
 
+/* Space Dodge expands into the free game-screen area on phones and desktops. */
+body.playing #play-area:has(#space.active) {
+  overflow:hidden; padding:clamp(4px,1vw,14px);
+}
+body.playing #space.game-panel.active {
+  min-height:0; height:100%; overflow:hidden; padding:clamp(8px,1.4vw,20px);
+  gap:clamp(4px,1vh,12px);
+}
+body.playing #space.game-panel.active .game-top {
+  flex:0 0 auto; margin-bottom:0;
+}
+body.playing #space.game-panel.active .status {
+  flex:0 0 auto; margin:4px auto 6px; padding:8px 12px;
+}
+body.playing #space-canvas {
+  display:block; flex:1 1 0; width:100%; max-width:1200px;
+  height:0; min-height:240px; max-height:none; margin:4px auto;
+  touch-action:none; user-select:none; -webkit-user-select:none;
+}
+body.playing #space .touch-controls {
+  flex:0 0 auto; margin:4px auto 0; gap:10px;
+}
+@media (max-height:700px) {
+  body.playing #space.game-panel.active .status { display:none; }
+  body.playing #space-canvas { min-height:180px; }
+}
+
 body.playing .touch-controls {
   flex-direction:row; flex-wrap:wrap; justify-content:center; gap:12px;
   width:min(100%,760px); margin:12px auto 6px;
@@ -575,7 +602,7 @@ let basketState=null;
 function startBasket(){let [c,ctx]=canvasCtx('basket-canvas');let token=++arcadeToken;basketState={score:0,left:30,shots:0,over:false,ball:null,hoop:210};c.onclick=e=>{if(basketState.over)return;let r=c.getBoundingClientRect(),x=(e.clientX-r.left)*c.width/r.width;basketState.shots++;basketState.ball={x:210,y:300,t:0,hit:Math.abs(x-basketState.hoop)<65};if(basketState.ball.hit)basketState.score++};let last=Date.now();let timerId=setInterval(()=>{if(token!==arcadeToken){clearInterval(timerId);return}basketState.left--;document.getElementById('basket-status').textContent='Score: '+basketState.score+' · Time: '+basketState.left+'s · Tap near the hoop.';if(basketState.left<=0){basketState.over=true;clearInterval(timerId);document.getElementById('basket-status').textContent='Time! Final score: '+basketState.score+'/'+basketState.shots}},1000);function frame(){if(token!==arcadeToken)return;let s=basketState;ctx.fillStyle=pgGradient(ctx,0,0,420,340,'#172b52','#080f25');ctx.fillRect(0,0,420,340);for(let i=0;i<7;i++){ctx.fillStyle=i%2?'#ffd56c':'#7cecff';ctx.beginPath();ctx.arc(25+i*62,32,7,0,Math.PI*2);ctx.fill()}ctx.fillStyle='#243f67';ctx.fillRect(0,55,420,235);ctx.strokeStyle='#ffffff28';ctx.lineWidth=3;ctx.strokeRect(28,70,364,210);ctx.beginPath();ctx.arc(210,180,68,0,Math.PI*2);ctx.stroke();ctx.fillStyle=pgGradient(ctx,0,290,420,50,'#c98a4b','#75402e');ctx.fillRect(0,290,420,50);ctx.strokeStyle='#f8d6a0';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(0,290);ctx.lineTo(420,290);ctx.stroke();ctx.fillStyle='#e7f6ff';ctx.fillRect(s.hoop+38,48,8,88);ctx.strokeStyle='#ff765f';ctx.lineWidth=7;ctx.beginPath();ctx.ellipse(s.hoop,101,39,10,0,0,Math.PI*2);ctx.stroke();ctx.strokeStyle='#ffffffaa';ctx.lineWidth=1.5;for(let k=-2;k<=2;k++){ctx.beginPath();ctx.moveTo(s.hoop+k*12,105);ctx.lineTo(s.hoop+k*7,150);ctx.stroke()}if(s.ball){s.ball.t+=.04;let t=s.ball.t;ctx.fillStyle='#ff9e45';ctx.beginPath();ctx.arc(210+(s.ball.x-210)*t,300-220*Math.sin(Math.PI*t),12,0,7);ctx.fill();if(t>1)s.ball=null}fitCanvasText(ctx,'Score: '+s.score,14,28);if(s.over)fitCanvasText(ctx,'Time is up!',165,200,20);requestAnimationFrame(frame)}frame();document.getElementById('basket-status').textContent='Tap near the hoop to shoot. 30 seconds.'}
 let spaceState=null;
 function spaceMove(d){if(spaceState)spaceState.x=Math.max(18,Math.min(362,spaceState.x+d*32))}
-function startSpace(){let [c,ctx]=canvasCtx('space-canvas');let token=++arcadeToken;spaceState={x:190,rocks:[],score:0,over:false};c.style.touchAction='none';let steerSpace=e=>{let r=c.getBoundingClientRect();spaceState.x=Math.max(18,Math.min(362,(e.clientX-r.left)*c.width/r.width))};c.onpointerdown=e=>{try{c.setPointerCapture(e.pointerId)}catch(_){}steerSpace(e)};c.onpointermove=e=>{if(e.buttons||e.pointerType==='touch')steerSpace(e)};function frame(){if(token!==arcadeToken)return;let s=spaceState;if(!s.over){s.score++;if(Math.random()<.035)s.rocks.push({x:Math.random()*360,y:-20,r:8+Math.random()*12});s.rocks.forEach(o=>o.y+=3.5);s.rocks=s.rocks.filter(o=>o.y<460);if(s.rocks.some(o=>Math.abs(o.x-s.x)<o.r+13&&Math.abs(o.y-395)<o.r+13))s.over=true}
+function startSpace(){let [c,ctx]=canvasCtx('space-canvas');let token=++arcadeToken;spaceState={x:190,rocks:[],score:0,over:false};c.style.touchAction='none';let steerSpace=e=>{let r=c.getBoundingClientRect();spaceState.x=Math.max(18,Math.min(362,(e.clientX-r.left)*c.width/r.width))};c.onpointerdown=e=>{e.preventDefault();try{c.setPointerCapture(e.pointerId)}catch(_){}steerSpace(e)};c.onpointermove=e=>{if(e.buttons||e.pointerType==='touch'){e.preventDefault();steerSpace(e)}};c.onpointerup=e=>{try{c.releasePointerCapture(e.pointerId)}catch(_){}};c.onpointercancel=()=>{};function frame(){if(token!==arcadeToken)return;let s=spaceState;if(!s.over){s.score++;if(Math.random()<.035)s.rocks.push({x:Math.random()*360,y:-20,r:8+Math.random()*12});s.rocks.forEach(o=>o.y+=3.5);s.rocks=s.rocks.filter(o=>o.y<460);if(s.rocks.some(o=>Math.abs(o.x-s.x)<o.r+13&&Math.abs(o.y-395)<o.r+13))s.over=true}
  ctx.fillStyle=pgGradient(ctx,0,0,380,440,'#080d2b','#21104b');ctx.fillRect(0,0,380,440);pgStars(ctx,380,440,s.score*3,75);ctx.fillStyle='#4c3f8d33';ctx.beginPath();ctx.arc(285,95,72,0,Math.PI*2);ctx.fill();s.rocks.forEach(o=>{ctx.save();ctx.shadowColor='#ff704f';ctx.shadowBlur=18;ctx.fillStyle=pgGradient(ctx,o.x-o.r,o.y-o.r,o.x+o.r,o.y+o.r,'#ffd18b','#a43b60');ctx.beginPath();for(let k=0;k<9;k++){let a=k*Math.PI*2/9,rr=o.r*(.78+(k%3)*.1);ctx.lineTo(o.x+Math.cos(a)*rr,o.y+Math.sin(a)*rr)}ctx.closePath();ctx.fill();ctx.restore()});ctx.save();ctx.shadowColor='#52eaff';ctx.shadowBlur=22;ctx.fillStyle='#64eaff';ctx.beginPath();ctx.moveTo(s.x,368);ctx.lineTo(s.x-17,414);ctx.lineTo(s.x,405);ctx.lineTo(s.x+17,414);ctx.closePath();ctx.fill();ctx.fillStyle='#ffffff';ctx.beginPath();ctx.moveTo(s.x,379);ctx.lineTo(s.x-6,403);ctx.lineTo(s.x+6,403);ctx.fill();ctx.restore();fitCanvasText(ctx,'Score: '+Math.floor(s.score/5),12,25);if(s.over)fitCanvasText(ctx,'Game over — restart',105,225,19);requestAnimationFrame(frame)}frame();document.getElementById('space-status').textContent='Drag your finger left or right to move the ship, or use the arrow buttons / keyboard.'}
 
 
