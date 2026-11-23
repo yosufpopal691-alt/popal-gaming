@@ -237,6 +237,178 @@ body{background:radial-gradient(ellipse at 12% 0%,#27315c 0,transparent 34%),rad
 .simon-level{text-align:center;font-weight:900;color:#ffe08a;margin:8px}
 .word-list{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:14px auto;max-width:560px}.word-chip{padding:8px 12px;border-radius:9px;background:#302346;border:1px solid #8063a5;font-weight:850;letter-spacing:1px}.word-chip.found{background:#155b52;color:#baffdf;text-decoration:line-through;border-color:#48e5a9}
 .word-grid{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:5px;width:min(94vw,470px);margin:16px auto}.word-grid button{aspect-ratio:1;min-width:0;padding:0;border-radius:8px;background:#252d4b;color:#fff;border:1px solid #ffffff24;font-size:clamp(14px,3.7vw,21px);font-weight:900;touch-action:manipulation}.word-grid button.selected{background:#7550b8;border-color:#d4b5ff}.word-grid button.found{background:#14634e;border-color:#5af0b7;color:#d9ffef}
+
+/* POPAL GAMING — ULTIMATE GRAPHICS PASS */
+:root{
+ --pg-ice:#8df7ff;--pg-pink:#ff6acb;--pg-lime:#a6ff8b;
+ --pg-night:#070b18;--pg-glass:rgba(20,27,52,.82)
+}
+body{
+ background:
+  radial-gradient(ellipse at 50% -18%,#6040a5 0,transparent 42%),
+  radial-gradient(ellipse at 4% 35%,#123c65 0,transparent 30%),
+  radial-gradient(ellipse at 100% 68%,#35164f 0,transparent 32%),
+  linear-gradient(145deg,#070b18,#0b1022 55%,#090817);
+ background-attachment:fixed
+}
+header{
+ background:linear-gradient(100deg,rgba(8,12,29,.96),rgba(24,14,48,.94));
+ border-bottom:1px solid #9b83ff55;
+ box-shadow:0 10px 35px #0009,0 1px #ffffff12 inset
+}
+.brand img{filter:drop-shadow(0 0 9px #8b7aff) drop-shadow(0 0 22px #55eaff55)}
+.brand strong{letter-spacing:1.4px;text-shadow:0 3px 15px #000}
+.search{
+ background:linear-gradient(135deg,#111a32,#17112d);
+ border:1px solid #8b83df88;box-shadow:inset 0 2px 8px #0008,0 0 18px #635bff16
+}
+.hero{
+ position:relative;isolation:isolate;
+ border:1px solid #9c8aff88;
+ background:
+  radial-gradient(circle at 82% 30%,#6d5cff55,transparent 28%),
+  radial-gradient(circle at 8% 100%,#16d7e933,transparent 35%),
+  linear-gradient(115deg,#111c3a 0%,#251653 52%,#101d3c 100%);
+ box-shadow:0 24px 70px #0009,0 0 38px #685bff25,inset 0 1px #ffffff35
+}
+.hero:before,.hero:after{content:"";position:absolute;pointer-events:none;z-index:-1}
+.hero:before{
+ width:340px;height:340px;right:4%;top:-46%;
+ border:1px solid #a9a0ff55;border-radius:50%;
+ box-shadow:0 0 0 22px #a9a0ff0c,0 0 0 48px #a9a0ff09,0 0 55px #7c70ff33
+}
+.hero:after{
+ inset:0;opacity:.16;
+ background-image:linear-gradient(#ffffff20 1px,transparent 1px),linear-gradient(90deg,#ffffff20 1px,transparent 1px);
+ background-size:34px 34px;mask-image:linear-gradient(90deg,transparent,#000 70%)
+}
+.hero h1{text-shadow:0 5px 24px #0009;letter-spacing:-1.5px}
+.hero-art img{filter:drop-shadow(0 18px 28px #000b) drop-shadow(0 0 25px #7d6cff55)}
+.stat{
+ background:linear-gradient(145deg,#172647,#15122e);
+ border:1px solid #8b91ff55;box-shadow:0 10px 24px #0006,inset 0 1px #ffffff1c
+}
+.stat b{text-shadow:0 0 18px #ffd36b77}
+.section-head h2{text-shadow:0 3px 18px #6d65ff55}
+.game-grid{gap:clamp(11px,1.35vw,19px)}
+.game-card{
+ position:relative;isolation:isolate;
+ border:1px solid #ffffff24;border-radius:19px;
+ background:linear-gradient(155deg,#1b2949,#11162b 68%,#17102b);
+ box-shadow:0 13px 28px #0007,inset 0 1px #ffffff16;
+ transition:transform .25s,border-color .25s,box-shadow .25s
+}
+.game-card:after{
+ content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ border-radius:inherit;opacity:0;transition:opacity .25s;
+ background:linear-gradient(125deg,#55eaff18,transparent 35%,#b36bff20 75%,#ff6acb12)
+}
+.game-card:hover{
+ transform:translateY(-7px) scale(1.012);
+ border-color:#9d9affaa;
+ box-shadow:0 22px 42px #0009,0 0 28px #786bff2b,inset 0 1px #ffffff28
+}
+.game-card:hover:after{opacity:1}
+.cover{
+ height:clamp(112px,11vw,158px);position:relative;isolation:isolate;
+ border-bottom:1px solid #ffffff30;
+ background:
+  radial-gradient(circle at 50% 42%,#ffffff32,transparent 33%),
+  linear-gradient(135deg,#253b70,#43266d 60%,#111b3c)!important
+}
+.cover:before{
+ z-index:-1;inset:-30%;opacity:.6;
+ background:repeating-linear-gradient(125deg,transparent 0 17px,#ffffff0c 18px 19px,transparent 20px 38px),
+ radial-gradient(circle at 70% 20%,#ffffff42,transparent 24%);
+ animation:pgCoverDrift 12s linear infinite
+}
+.cover:after{
+ content:"";position:absolute;inset:0;z-index:-1;
+ background:linear-gradient(110deg,transparent 25%,#ffffff18 48%,transparent 68%);
+ transform:translateX(-120%);transition:transform .65s
+}
+.game-card:hover .cover:after{transform:translateX(120%)}
+.cover span{
+ width:clamp(68px,7vw,96px);height:clamp(68px,7vw,96px);
+ border-radius:26px;font-size:clamp(39px,4vw,58px);
+ background:linear-gradient(145deg,#ffffff38,#ffffff09);
+ border:1px solid #ffffff70;
+ box-shadow:0 13px 25px #0007,inset 0 2px #ffffff75,0 0 28px #ffffff18;
+ backdrop-filter:blur(7px)
+}
+.cover small{font-weight:950;text-shadow:0 2px 9px #000;letter-spacing:2px}
+.cover-puzzle{background:radial-gradient(circle at 75% 15%,#8c7aff,#254b83 55%,#101c3b)!important}
+.cover-arcade{background:radial-gradient(circle at 25% 20%,#ff75bd,#7136a5 52%,#211341)!important}
+.cover-racing{background:linear-gradient(135deg,#ff744e,#80325c 48%,#171d43)!important}
+.cover-sports{background:linear-gradient(135deg,#38e0bd,#236b91 52%,#14234c)!important}
+.cover-action{background:linear-gradient(135deg,#ff527f,#853d9f 54%,#21183f)!important}
+.cover-adventure{background:linear-gradient(135deg,#7be9a6,#277b79 52%,#1b2b57)!important}
+.cover-casual{background:linear-gradient(135deg,#ffdc78,#b66a35 52%,#392454)!important}
+.game-card-body{padding:13px}
+.game-card h3{font-size:clamp(13px,1.1vw,16px);letter-spacing:.15px}
+.game-card p{color:#c5cce5}
+.play-link{
+ background:linear-gradient(100deg,#ffffff12,#7c69ff20);
+ border:1px solid #8e9bff70;box-shadow:inset 0 1px #ffffff20;
+ transition:background .2s,box-shadow .2s
+}
+.game-card:hover .play-link{background:linear-gradient(100deg,#6a5be0,#3a74ae);box-shadow:0 0 18px #6f70ff44}
+.filter-chip{background:linear-gradient(145deg,#192542,#17142f);border:1px solid #777bd266;box-shadow:0 5px 14px #0004}
+.filter-chip.selected,.filter-chip:hover{box-shadow:0 0 22px #846bff55,inset 0 1px #ffffff35}
+.game-panel{
+ position:relative;overflow:hidden;
+ background:
+  radial-gradient(ellipse at 50% -5%,#46549b66,transparent 48%),
+  radial-gradient(ellipse at 100% 100%,#4d246d44,transparent 45%),
+  linear-gradient(145deg,#131e3a,#0a1022 72%,#111027);
+ border:1px solid #8c9cff77;
+ box-shadow:0 24px 70px #000b,inset 0 1px #ffffff22
+}
+.game-panel:before{
+ content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;
+ background-image:radial-gradient(#b9c9ff 1px,transparent 1px);background-size:25px 25px;
+ mask-image:linear-gradient(180deg,#000,transparent 70%)
+}
+.game-panel>*{position:relative}
+.game-top h3{font-size:clamp(22px,3vw,32px)!important;text-shadow:0 4px 22px #000}
+.game-panel button{
+ box-shadow:0 7px 16px #0006,inset 0 1px #ffffff2b;
+ border:1px solid #ffffff2c
+}
+.game-panel button:hover{filter:brightness(1.15) saturate(1.15);box-shadow:0 10px 23px #0008,0 0 18px #8d7bff30}
+.status{
+ color:#e7f5ff;background:linear-gradient(100deg,#1a3153,#30245a);
+ border:1px solid #86c9ff55;box-shadow:0 8px 24px #0005,inset 0 1px #ffffff25
+}
+.arcade-canvas{
+ border:1px solid #8eeaffaa;
+ box-shadow:0 0 0 5px #ffffff08,0 22px 45px #000a,0 0 34px #55dfff28
+}
+.simon-board{gap:16px}
+.simon-tile{
+ border-radius:25px;border-width:3px;opacity:.9;
+ box-shadow:inset 0 5px 16px #ffffff22,inset 0 -12px 22px #0005,0 12px 24px #0007
+}
+.simon-tile.lit{filter:brightness(1.8) saturate(1.4) drop-shadow(0 0 22px currentColor)}
+.word-grid button{
+ background:linear-gradient(145deg,#263c68,#192644);
+ border:1px solid #8baaff66;border-radius:10px;
+ box-shadow:inset 0 1px #ffffff24,0 4px 9px #0005
+}
+.word-grid button.selected{background:linear-gradient(145deg,#a66cff,#5745ad);box-shadow:0 0 17px #a879ff88}
+.word-grid button.found{background:linear-gradient(145deg,#27bd91,#126c68);box-shadow:0 0 15px #48f0b755}
+.word-chip{background:linear-gradient(145deg,#27385d,#252044);border:1px solid #8e9cff77;box-shadow:0 5px 13px #0005}
+.word-chip.found{box-shadow:0 0 15px #48e5a955}
+footer{background:linear-gradient(180deg,transparent,#10152a);border-color:#8495ff33}
+@keyframes pgCoverDrift{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@media(max-width:520px){
+ .cover{height:112px}
+ .game-card{border-radius:16px}
+ .game-card-body{padding:10px}
+ .game-panel{box-shadow:0 14px 36px #0009}
+}
+@media(prefers-reduced-motion:reduce){.cover:before{animation:none}}
+
 </style></head><body>
 <header><div class="nav">
 <a class="brand" href="#home" onclick="goHome()"><img src="logo.png" alt="Popal Gaming emblem"><strong>POPAL<span>GAMING</span></strong></a>
